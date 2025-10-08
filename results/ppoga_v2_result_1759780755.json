@@ -1,0 +1,7 @@
+{
+  "success": false,
+  "question": "Who directed The Godfather?",
+  "error": "Error code: 401 - {'error': {'message': 'Incorrect API key provided: 860b25f2********************b80e. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}",
+  "execution_time": 1.449841022491455,
+  "iterations": 0
+}
