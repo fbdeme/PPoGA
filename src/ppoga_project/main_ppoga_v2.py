@@ -434,6 +434,7 @@ def load_sample_entities(question: str) -> Dict[str, str]:
     # Sample entity mappings for common questions (verified Freebase IDs)
     sample_mappings = {
         "godfather": {"m.07g1sm": "The Godfather"},  # Verified from SPARQL
+        "titanic": {"m.0dr_4": "Titanic"},  # 1997 James Cameron film
         "taylor swift": {"m.0dl567": "Taylor Swift"},
         "obama": {"m.02mjmr": "Barack Obama"},
         "france": {"m.0f8l9c": "France"},

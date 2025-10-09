@@ -3,6 +3,9 @@ import random
 import json
 import time
 import re
+import sys
+import os
+from .utils import run_llm
 
 # SPARQL endpoint configuration
 SPARQLPATH = "http://localhost:8890/sparql"  # Your local Freebase endpoint
@@ -118,42 +121,69 @@ def relation_search_prune(
     head_relations = list(set(head_relations))
     tail_relations = list(set(tail_relations))
     total_relations = head_relations + tail_relations
-    
-    # Prioritize important relations (film, people, etc.)
-    def prioritize_relations(relations):
-        priority_patterns = [
-            'film.film.directed_by',
-            'film.film.starring',
-            'film.film.produced_by',
-            'film.film.written_by',
-            'people.person',
-            'film.',
-            'music.',
-            'book.',
-            'organization.'
-        ]
-        
-        prioritized = []
-        regular = []
-        
-        for relation in relations:
-            is_priority = False
-            for pattern in priority_patterns:
-                if pattern in relation:
-                    prioritized.append(relation)
-                    is_priority = True
-                    break
-            if not is_priority:
-                regular.append(relation)
-        
-        return sorted(prioritized) + sorted(regular)
-    
-    total_relations = prioritize_relations(total_relations)
+    total_relations.sort()
 
-    # Select relations using LLM (simplified version)
+    # Select relations using LLM (원본 PoG 방식 복원)
     if total_relations:
-        # For now, return first few relations (can be enhanced with LLM selection)
-        selected_relations = total_relations[:5]  # Limit to 5 relations
+        # 관계 선택을 위한 프롬프트 구성
+        prompt = f"""Please provide as few highly relevant relations as possible to the question and its subobjectives from the following relations (separated by semicolons).
+Here is an example:
+Q: Name the president of the country whose main spoken language was Brahui in 1980?
+Subobjectives: ['Identify the countries where the main spoken language is Brahui', 'Find the president of each country', 'Determine the president from 1980']
+Topic Entity: Brahui Language
+Relations: language.human_language.main_country; language.human_language.language_family; language.human_language.iso_639_3_code; base.rosetta.languoid.parent; language.human_language.writing_system; base.rosetta.languoid.languoid_class; language.human_language.countries_spoken_in; kg.object_profile.prominent_type; base.rosetta.languoid.document; base.ontologies.ontology_instance.equivalent_instances; base.rosetta.languoid.local_name; language.human_language.region
+The output is: 
+['language.human_language.main_country','language.human_language.countries_spoken_in','base.rosetta.languoid.parent']
+
+Now you need to directly output relations highly related to the following question and its subobjectives in list format without other information or notes.
+Q: {question}
+Subobjectives: {sub_questions}
+Topic Entity: {entity_name}
+Relations: {'; '.join(total_relations)}"""
+
+        try:
+            # LLM 호출 (config.py의 필드명과 일치하도록 수정)
+            result, token_info = run_llm(
+                prompt=prompt,
+                temperature=0.3,
+                max_tokens=4096,
+                openai_api_keys=getattr(
+                    args, "openai_api_key", ""
+                ),  # config의 openai_api_key 필드 사용
+                engine=getattr(
+                    args, "model", "gpt-3.5-turbo"
+                ),  # config의 model 필드 사용
+                print_in=False,
+                print_out=False,
+            )
+
+            print(f"🔍 LLM 관계 선택 결과: {result[:100]}...")
+
+            # 원본 PoG의 select_relations 로직 적용
+            selected_relations = []
+            try:
+                # 대괄호 안의 내용 추출
+                last_brace_l = result.rfind("[")
+                last_brace_r = result.rfind("]")
+
+                if last_brace_l < last_brace_r:
+                    result = result[last_brace_l : last_brace_r + 1]
+
+                rel_list = eval(result.strip())
+                selected_relations = [rel for rel in rel_list if rel in total_relations]
+                print(
+                    f"✅ LLM이 선택한 관계 {len(selected_relations)}개: {selected_relations[:3]}..."
+                )
+
+            except Exception as parse_error:
+                # 파싱 실패 시 처음 5개 관계 사용 (fallback)
+                print(f"❌ LLM 응답 파싱 실패: {parse_error}, fallback 사용")
+                selected_relations = total_relations[:5]
+
+        except Exception as e:
+            print(f"❌ LLM 관계 선택 실패: {e}, fallback 사용")
+            selected_relations = total_relations[:5]
+            token_info = {"total": 0, "input": 0, "output": 0}
 
         relations = []
         for relation in selected_relations:
@@ -166,7 +196,8 @@ def relation_search_prune(
                     {"entity": entity_id, "relation": relation, "head": False}
                 )
 
-        return relations, {"total": 0, "input": 0, "output": 0}
+        print(f"🎯 최종 선택된 관계 {len(relations)}개")
+        return relations, token_info
     else:
         return [], {"total": 0, "input": 0, "output": 0}
 
