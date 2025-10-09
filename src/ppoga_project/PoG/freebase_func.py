@@ -148,11 +148,11 @@ Relations: {'; '.join(total_relations)}"""
                 temperature=0.3,
                 max_tokens=4096,
                 openai_api_keys=getattr(
-                    args, "openai_api_key", ""
-                ),  # config의 openai_api_key 필드 사용
+                    args, "openai_api_keys", ""
+                ),  # config의 openai_api_keys 필드 사용 (복수형)
                 engine=getattr(
-                    args, "model", "gpt-3.5-turbo"
-                ),  # config의 model 필드 사용
+                    args, "LLM_type", "gpt-3.5-turbo"
+                ),  # config의 LLM_type 필드 사용
                 print_in=False,
                 print_out=False,
             )

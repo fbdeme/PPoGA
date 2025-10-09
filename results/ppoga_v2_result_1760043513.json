@@ -1,0 +1,249 @@
+{
+  "success": true,
+  "question": "What is the birth year of the person who directed the movie Titanic?",
+  "answer": "1954",
+  "confidence": "high",
+  "supporting_evidence": [
+    "James Cameron, the director of Titanic, was born in 1954."
+  ],
+  "reasoning": "The movie Titanic was directed by James Cameron. James Cameron was born in 1954.",
+  "limitations": "There is a high level of certainty in this answer based on available information.",
+  "execution_time": 49.506325006484985,
+  "iterations": 3,
+  "statistics": {
+    "memory_summary": {
+      "question": "What is the birth year of the person who directed the movie Titanic?",
+      "current_step": "Completed",
+      "step_progress": "3/3",
+      "total_steps": 3,
+      "entities_discovered": 11,
+      "relations_explored": 6,
+      "execution_cycles": 3,
+      "replan_count": 0,
+      "llm_calls": 8,
+      "sparql_queries": 6,
+      "status": "Executing",
+      "reasoning_chains": 0,
+      "llm_interaction_logs": [
+        {
+          "timestamp": 1760043466.4288902,
+          "call_type": "step1_plan_decomposition",
+          "prompt": "Question: What is the birth year of the person who directed the movie Titanic?\nContext: {'initial_entities': ['Titanic']}",
+          "response": "{'success': True, 'plan': [{'step_id': 1, 'description': 'Identify the director of the movie Titanic', 'objective': 'To determine who directed the movie Titanic', 'expected_outcome': 'Obtain the name of the director of the movie Titanic'}, {'step_id': 2, 'description': 'Research the birth year of the identified director', 'objective': 'To find the birth year of the director of the movie Titanic', 'expected_outcome': 'Discover the birth year of the director'}, {'step_id': 3, 'description': 'Verify the accuracy of the obtained birth year', 'objective': 'To ensure the birth year information is correct', 'expected_outcome': \"Confirmation of the director's birth year\"}], 'rationale': 'This plan will effectively answer the question by first identifying the director of the movie Titanic, then researching their birth year, and finally verifying the accuracy of the obtained information to provide a reliable answer.', 'token_usage': {'total': 442, 'input': 217, 'output': 225}}",
+          "success": true,
+          "metadata": {
+            "iteration": 0,
+            "ppoga_step": "1_plan_decomposition",
+            "step_description": "Strategic Plan Decomposition"
+          },
+          "call_id": 1
+        },
+        {
+          "timestamp": 1760043467.244977,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 1, 'description': 'Identify the director of the movie Titanic', 'objective': 'To determine who directed the movie Titanic', 'expected_outcome': 'Obtain the name of the director of the movie Titanic', 'status': 'not_started'}\nContext: {'current_context': 'Executing step 1 of 3', 'available_info': 'Discovered 0 entities so far', 'memory_context': 'Current Question: What is the birth year of the person who directed the movie Titanic?\\nProgress: Step 0/3 - Identify the director of the movie Titanic\\nDiscovered Entities: 0\\nExplored Relations: 0\\n'}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': ['James Cameron'], 'predicted_challenges': ['Ambiguity if there are multiple directors with the same name'], 'confidence_level': 'high', 'alternative_approaches': ['Cross-referencing with multiple sources to confirm the director'], 'expected_information_type': 'Name of the director'}, 'token_usage': {'total': 262, 'input': 192, 'output': 70}}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 2
+        },
+        {
+          "timestamp": 1760043467.244993,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['Titanic']\nPlan Step: {'step_id': 1, 'description': 'Identify the director of the movie Titanic', 'objective': 'To determine who directed the movie Titanic', 'expected_outcome': 'Obtain the name of the director of the movie Titanic', 'status': 'not_started'}",
+          "response": "Starting execution for 1 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 1
+          },
+          "call_id": 3
+        },
+        {
+          "timestamp": 1760043474.805623,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': ['James Cameron'], 'predicted_challenges': ['Ambiguity if there are multiple directors with the same name'], 'confidence_level': 'high', 'alternative_approaches': ['Cross-referencing with multiple sources to confirm the director'], 'expected_information_type': 'Name of the director'}\nObservation: Exploration results for Titanic:\n  - film.director.film: James Cameron\nTotal entities discovered: 1\nStep: {'step_id': 1, 'description': 'Identify the director of the movie Titanic', 'objective': 'To determine who directed the movie Titanic', 'expected_outcome': 'Obtain the name of the director of the movie Titanic', 'status': 'not_started'}\nMemory: Current Question: What is the birth year of the person who directed the movie Titanic?\nProgress: Step 0/3 - Identify the director of the movie Titanic\nDiscovered Entities: 1\nExplored Relations: 1\n",
+          "response": "{'direct_answer_found': 'no', 'answer_content': 'none', 'step_success': 'partial_success', 'progress_assessment': 'Making progress towards the goal.', 'next_action': 'PROCEED', 'reasoning': 'While we have identified James Cameron as the director of the movie Titanic, we still need to explore further to find the birth year of James Cameron.', 'confidence': 'high', 'information_completeness': 'partial'}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 4
+        },
+        {
+          "timestamp": 1760043474.805639,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 5
+        },
+        {
+          "timestamp": 1760043476.660789,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 2, 'description': 'Research the birth year of the identified director', 'objective': 'To find the birth year of the director of the movie Titanic', 'expected_outcome': 'Discover the birth year of the director', 'status': 'not_started'}\nContext: {'current_context': 'Executing step 2 of 3', 'available_info': 'Discovered 1 entities so far', 'memory_context': 'Current Question: What is the birth year of the person who directed the movie Titanic?\\nProgress: Step 1/3 - Research the birth year of the identified director\\nDiscovered Entities: 1\\nExplored Relations: 1\\n'}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': ['Director of the movie Titanic'], 'predicted_challenges': ['Variability in sources providing conflicting birth year information, common names leading to ambiguity'], 'confidence_level': 'medium', 'alternative_approaches': ['Checking multiple reliable sources, cross-referencing with official databases or biographies'], 'expected_information_type': 'Birth year of the director'}, 'token_usage': {'total': 279, 'input': 198, 'output': 81}}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 6
+        },
+        {
+          "timestamp": 1760043476.660823,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['Titanic', 'James Cameron']\nPlan Step: {'step_id': 2, 'description': 'Research the birth year of the identified director', 'objective': 'To find the birth year of the director of the movie Titanic', 'expected_outcome': 'Discover the birth year of the director', 'status': 'not_started'}",
+          "response": "Starting execution for 2 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 2
+          },
+          "call_id": 7
+        },
+        {
+          "timestamp": 1760043491.413217,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': ['Director of the movie Titanic'], 'predicted_challenges': ['Variability in sources providing conflicting birth year information, common names leading to ambiguity'], 'confidence_level': 'medium', 'alternative_approaches': ['Checking multiple reliable sources, cross-referencing with official databases or biographies'], 'expected_information_type': 'Birth year of the director'}\nObservation: Exploration results for Titanic:\n  - film.director.film: James Cameron\n  - film.film.directed_by: James Cameron\n  - film.writer.film: James Cameron\nTotal entities discovered: 3\nExploration results for James Cameron:\n  - people.person.date_of_birth: 1954-08-16\nTotal entities discovered: 1\nStep: {'step_id': 2, 'description': 'Research the birth year of the identified director', 'objective': 'To find the birth year of the director of the movie Titanic', 'expected_outcome': 'Discover the birth year of the director', 'status': 'not_started'}\nMemory: Current Question: What is the birth year of the person who directed the movie Titanic?\nProgress: Step 1/3 - Research the birth year of the identified director\nDiscovered Entities: 2\nExplored Relations: 4\n",
+          "response": "{'direct_answer_found': 'yes', 'answer_content': '1954-08-16', 'step_success': 'success', 'progress_assessment': 'significant progress', 'next_action': 'PROCEED', 'reasoning': 'The observation provided a direct answer to the main question about the birth year of the director of the movie Titanic, James Cameron. The information is accurate and relevant.', 'confidence': 'high', 'information_completeness': 'complete'}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 8
+        },
+        {
+          "timestamp": 1760043491.413225,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 9
+        },
+        {
+          "timestamp": 1760043492.867249,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 3, 'description': 'Verify the accuracy of the obtained birth year', 'objective': 'To ensure the birth year information is correct', 'expected_outcome': \"Confirmation of the director's birth year\", 'status': 'not_started'}\nContext: {'current_context': 'Executing step 3 of 3', 'available_info': 'Discovered 2 entities so far', 'memory_context': 'Current Question: What is the birth year of the person who directed the movie Titanic?\\nProgress: Step 2/3 - Verify the accuracy of the obtained birth year\\nDiscovered Entities: 2\\nExplored Relations: 4\\n'}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': ['birth date', 'birth place', 'family members'], 'predicted_challenges': ['inaccurate or conflicting information', 'missing birth year data'], 'confidence_level': 'medium', 'alternative_approaches': ['cross-referencing with multiple sources', 'verifying with official records'], 'expected_information_type': 'biographical details'}, 'token_usage': {'total': 274, 'input': 194, 'output': 80}}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 10
+        },
+        {
+          "timestamp": 1760043492.867255,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['Titanic', 'James Cameron', '1954-08-16']\nPlan Step: {'step_id': 3, 'description': 'Verify the accuracy of the obtained birth year', 'objective': 'To ensure the birth year information is correct', 'expected_outcome': \"Confirmation of the director's birth year\", 'status': 'not_started'}",
+          "response": "Starting execution for 3 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 3
+          },
+          "call_id": 11
+        },
+        {
+          "timestamp": 1760043512.6874502,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': ['birth date', 'birth place', 'family members'], 'predicted_challenges': ['inaccurate or conflicting information', 'missing birth year data'], 'confidence_level': 'medium', 'alternative_approaches': ['cross-referencing with multiple sources', 'verifying with official records'], 'expected_information_type': 'biographical details'}\nObservation: Exploration results for Titanic:\n  - film.film.release_date_s: m.0h5q4_5, m.0j7c057, m.0k1bf9f and 5 more\n  - film.film.initial_release_date: 1997-11-01\nTotal entities discovered: 9\nExploration results for James Cameron:\n  - people.person.date_of_birth: 1954-08-16\nTotal entities discovered: 1\nNo information found for 1954-08-16\nStep: {'step_id': 3, 'description': 'Verify the accuracy of the obtained birth year', 'objective': 'To ensure the birth year information is correct', 'expected_outcome': \"Confirmation of the director's birth year\", 'status': 'not_started'}\nMemory: Current Question: What is the birth year of the person who directed the movie Titanic?\nProgress: Step 2/3 - Verify the accuracy of the obtained birth year\nDiscovered Entities: 11\nExplored Relations: 6\n",
+          "response": "{'direct_answer_found': 'yes', 'answer_content': '1954-08-16', 'step_success': 'success', 'progress_assessment': 'significant progress', 'next_action': 'PROCEED', 'reasoning': 'The exploration provided a direct answer to the main question by revealing the birth year of James Cameron, the director of the movie Titanic. The accuracy of the obtained information has been verified.', 'confidence': 'high', 'information_completeness': 'complete'}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 12
+        },
+        {
+          "timestamp": 1760043512.6874611,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 13
+        },
+        {
+          "timestamp": 1760043513.992859,
+          "call_type": "step5_final_answer_generation",
+          "prompt": "PPoGA Step 5 - Final Answer Generation\nQuestion: What is the birth year of the person who directed the movie Titanic?\nMemory Context: Current Question: What is the birth year of the person who directed the movie Titanic?\nProgress: Step 3/3 - Completed\nDiscovered Entities: 11\nExplored Relations: 6\n\nReasoning Chains: []",
+          "response": "{'success': True, 'answer_data': {'final_answer': '1954', 'confidence': 'high', 'supporting_evidence': ['James Cameron, the director of Titanic, was born in 1954.'], 'reasoning_chain': 'The movie Titanic was directed by James Cameron. James Cameron was born in 1954.', 'limitations': 'There is a high level of certainty in this answer based on available information.'}, 'token_usage': {'total': 269, 'input': 182, 'output': 87}}",
+          "success": true,
+          "metadata": {
+            "ppoga_step": "5_final_answer_generation",
+            "step_description": "Memory Integration and Final Answer Synthesis",
+            "final_step": true,
+            "total_iterations": 3,
+            "total_entities_discovered": 11,
+            "total_relations_explored": 0
+          },
+          "call_id": 14
+        }
+      ]
+    },
+    "planner_stats": {
+      "total_llm_calls": 14,
+      "successful_predictions": 3,
+      "failed_predictions": 0,
+      "replans_triggered": 0
+    },
+    "executor_stats": {
+      "total_queries": 8,
+      "successful_queries": 6,
+      "failed_queries": 0,
+      "entities_discovered": 13,
+      "relations_explored": 8
+    },
+    "total_llm_calls": 8,
+    "total_sparql_queries": 6
+  }
+}
