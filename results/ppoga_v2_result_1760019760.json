@@ -1,0 +1,44 @@
+{
+  "success": true,
+  "question": "Who directed The Godfather?",
+  "answer": "Francis Ford Coppola",
+  "confidence": "high",
+  "supporting_evidence": [
+    "Francis Ford Coppola is widely known as the director of The Godfather."
+  ],
+  "reasoning": "Searched for the movie 'The Godfather' and found that Francis Ford Coppola directed it.",
+  "limitations": "There is a high level of certainty in this answer.",
+  "execution_time": 552.9958682060242,
+  "iterations": 5,
+  "statistics": {
+    "memory_summary": {
+      "question": "Who directed The Godfather?",
+      "current_step": "Search for the movie 'The Godfather'",
+      "step_progress": "0/3",
+      "total_steps": 3,
+      "entities_discovered": 64,
+      "relations_explored": 15,
+      "execution_cycles": 5,
+      "replan_count": 0,
+      "llm_calls": 12,
+      "sparql_queries": 13,
+      "status": "Executing",
+      "reasoning_chains": 0
+    },
+    "planner_stats": {
+      "total_llm_calls": 12,
+      "successful_predictions": 5,
+      "failed_predictions": 0,
+      "replans_triggered": 0
+    },
+    "executor_stats": {
+      "total_queries": 65,
+      "successful_queries": 13,
+      "failed_queries": 0,
+      "entities_discovered": 319,
+      "relations_explored": 65
+    },
+    "total_llm_calls": 12,
+    "total_sparql_queries": 13
+  }
+}

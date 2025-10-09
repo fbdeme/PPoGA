@@ -1,0 +1,7 @@
+{
+  "success": false,
+  "question": "Who directed The Godfather?",
+  "error": "'total_relations_explored'",
+  "execution_time": 2.275236129760742,
+  "iterations": 1
+}

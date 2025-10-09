@@ -118,7 +118,37 @@ def relation_search_prune(
     head_relations = list(set(head_relations))
     tail_relations = list(set(tail_relations))
     total_relations = head_relations + tail_relations
-    total_relations.sort()
+    
+    # Prioritize important relations (film, people, etc.)
+    def prioritize_relations(relations):
+        priority_patterns = [
+            'film.film.directed_by',
+            'film.film.starring',
+            'film.film.produced_by',
+            'film.film.written_by',
+            'people.person',
+            'film.',
+            'music.',
+            'book.',
+            'organization.'
+        ]
+        
+        prioritized = []
+        regular = []
+        
+        for relation in relations:
+            is_priority = False
+            for pattern in priority_patterns:
+                if pattern in relation:
+                    prioritized.append(relation)
+                    is_priority = True
+                    break
+            if not is_priority:
+                regular.append(relation)
+        
+        return sorted(prioritized) + sorted(regular)
+    
+    total_relations = prioritize_relations(total_relations)
 
     # Select relations using LLM (simplified version)
     if total_relations:

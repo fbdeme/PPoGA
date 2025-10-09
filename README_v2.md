@@ -20,7 +20,7 @@ PPoGA v2 represents a complete reimagining of the PPoGA system, built on a solid
 src/ppoga_project/
 ├── PoG/                          # 🔥 Proven PoG Engine (from original PoG research)
 │   ├── freebase_func.py          # SPARQL execution engine
-│   ├── utils.py                  # LLM utilities  
+│   ├── utils.py                  # LLM utilities
 │   └── prompt_list.py            # Base prompts
 ├── ppoga_v2/                     # 🚀 PPoGA v2 Extensions
 │   ├── predictive_planner.py     # Strategic planning + PreAct prediction
@@ -31,8 +31,8 @@ src/ppoga_project/
 
 legacy/                           # 📦 Legacy & Experimental Code
 ├── freebase_func_root_legacy.py  # Old root-level files (cleaned up)
-├── utils_root_legacy.py          
-├── prompt_list_root_legacy.py    
+├── utils_root_legacy.py
+├── prompt_list_root_legacy.py
 ├── pog_base_duplicate/           # Duplicate of PoG folder
 ├── ppoga_core_experimental/      # Experimental implementation
 ├── ppoga_v1_old/                 # Previous PPoGA v1
@@ -42,11 +42,13 @@ legacy/                           # 📦 Legacy & Experimental Code
 ### 🧹 Code Organization & Cleanup
 
 **✅ Active Codebase (Clean & Maintained)**
+
 - `src/ppoga_project/PoG/`: Original PoG research SPARQL engine (160 lines, optimized)
 - `src/ppoga_project/ppoga_v2/`: PPoGA v2 extensions with predictive capabilities
 - `src/ppoga_project/main_ppoga_v2.py`: Main execution system (403 lines, tested)
 
 **📦 Legacy Codebase (Archived)**
+
 - `legacy/`: All duplicate, experimental, and outdated implementations
 - Removed circular imports and code duplication
 - Preserved development history for reference
@@ -218,17 +220,20 @@ This implementation provides the first working system that meaningfully combines
 ## ✅ Validation & Testing
 
 ### 🧪 System Verification
+
 - **Execution Test**: Successfully answered "Who directed The Godfather?" → "Francis Ford Coppola"
 - **Performance**: 12.95s execution time with 8 LLM calls and graceful SPARQL fallback
 - **Code Quality**: Clean 403-line main execution with modular 3-component architecture
 
 ### 📊 Architecture Validation
+
 - **✅ PreAct Integration**: Prediction → Action → Observation → Thought cycles implemented
 - **✅ PoG Foundation**: Direct integration with proven SPARQL engine (battle-tested)
 - **✅ Memory System**: 3-layer architecture (Strategic/Execution/Knowledge) operational
 - **✅ Self-Correction**: Multi-level error handling and replanning mechanisms
 
 ### 🗂️ Code Organization Cleanup (October 2025)
+
 - **Removed Duplicates**: Eliminated 4 redundant folders and 3 duplicate root files
 - **Legacy Archive**: Moved experimental code to `legacy/` folder with descriptive names
 - **Import Clean**: Fixed circular dependencies and simplified import structure
@@ -237,12 +242,14 @@ This implementation provides the first working system that meaningfully combines
 ## 🚀 Recent Updates
 
 ### v2.1 - Code Organization & Cleanup (October 8, 2025)
+
 - 🧹 **Major Cleanup**: Removed duplicate files and experimental implementations
 - 📦 **Legacy Archive**: Organized all development artifacts in structured legacy folder
 - ✅ **Validation**: Confirmed system integrity after cleanup with successful test execution
 - 📝 **Documentation**: Updated README with clear active vs. legacy code distinction
 
 ### v2.0 - Initial PPoGA v2 Implementation
+
 - 🔥 **PoG Integration**: Built on proven NeurIPS 2024 research foundation
 - 🔮 **Predictive Planning**: PreAct-inspired outcome prediction system
 - 🧠 **Enhanced Memory**: Three-layer memory architecture implementation

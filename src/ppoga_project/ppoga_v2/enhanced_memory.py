@@ -69,14 +69,21 @@ class PPoGAMemory:
             "candidates": [],  # Current answer candidates
         }
 
-        # Statistics
+        # Statistics and Metrics
         self.stats = {
             "llm_calls": 0,
             "sparql_queries": 0,
-            "total_entities_explored": 0,
+            "start_time": time.time(),
+            "reasoning_chains": 0,
             "total_relations_explored": 0,
-            "execution_time": 0,
+            "total_entities_explored": 0,
         }
+        
+        # LLM Interaction Logs
+        self.llm_logs = []  # Detailed LLM request/response logs
+        
+        # Current execution state
+        self.current_step_index = 0
 
     def update_plan(self, plan_steps: List[Dict], rationale: str):
         """Update the strategic plan"""
@@ -143,6 +150,26 @@ class PPoGAMemory:
             self.knowledge["discovered_entities"]
         )
 
+    def log_llm_interaction(
+        self, 
+        call_type: str, 
+        prompt: str, 
+        response: str, 
+        success: bool = True,
+        metadata: Dict[str, Any] = None
+    ):
+        """Log detailed LLM interaction"""
+        log_entry = {
+            "timestamp": time.time(),
+            "call_type": call_type,  # decompose_plan, predict_outcome, think_evaluate, etc.
+            "prompt": prompt,
+            "response": response,
+            "success": success,
+            "metadata": metadata or {},
+            "call_id": len(self.llm_logs) + 1
+        }
+        self.llm_logs.append(log_entry)
+
     def add_exploration_result(
         self, entity_id: str, relation: str, target_entities: List[str]
     ):
@@ -198,6 +225,7 @@ class PPoGAMemory:
             "sparql_queries": self.stats["sparql_queries"],
             "status": self.strategy["status"],
             "reasoning_chains": len(self.knowledge["reasoning_chains"]),
+            "llm_interaction_logs": self.llm_logs  # Add detailed LLM logs
         }
 
     def get_context_for_llm(self) -> str:

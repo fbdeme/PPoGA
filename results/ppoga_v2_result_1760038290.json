@@ -1,0 +1,249 @@
+{
+  "success": true,
+  "question": "Who directed The Godfather?",
+  "answer": "Francis Ford Coppola",
+  "confidence": "high",
+  "supporting_evidence": [
+    "Francis Ford Coppola is widely known as the director of The Godfather."
+  ],
+  "reasoning": [],
+  "limitations": "There is a high level of certainty in this answer based on widely available information.",
+  "execution_time": 192.89079070091248,
+  "iterations": 3,
+  "statistics": {
+    "memory_summary": {
+      "question": "Who directed The Godfather?",
+      "current_step": "Completed",
+      "step_progress": "3/3",
+      "total_steps": 3,
+      "entities_discovered": 45,
+      "relations_explored": 14,
+      "execution_cycles": 3,
+      "replan_count": 0,
+      "llm_calls": 8,
+      "sparql_queries": 7,
+      "status": "Executing",
+      "reasoning_chains": 0,
+      "llm_interaction_logs": [
+        {
+          "timestamp": 1760038099.6446111,
+          "call_type": "step1_plan_decomposition",
+          "prompt": "Question: Who directed The Godfather?\nContext: {'initial_entities': ['The Godfather']}",
+          "response": "{'success': True, 'plan': [{'step_id': 1, 'description': \"Search for the movie 'The Godfather'\", 'objective': 'Identify the key information related to the movie', 'expected_outcome': 'Retrieve details such as the director, release year, and cast'}, {'step_id': 2, 'description': \"Extract the director's name from the movie details\", 'objective': 'Isolate the specific information about the director', 'expected_outcome': \"Obtain the name of the director who worked on 'The Godfather'\"}, {'step_id': 3, 'description': \"Verify the accuracy of the director's name\", 'objective': \"Confirm the correctness of the director's identity\", 'expected_outcome': \"Ensure that the director's name obtained is accurate and matches the actual director of the movie\"}], 'rationale': \"This plan will effectively answer the question by systematically searching for the movie, extracting the director's name, and verifying its accuracy to provide the correct answer.\", 'token_usage': {'total': 443, 'input': 209, 'output': 234}}",
+          "success": true,
+          "metadata": {
+            "iteration": 0,
+            "ppoga_step": "1_plan_decomposition",
+            "step_description": "Strategic Plan Decomposition"
+          },
+          "call_id": 1
+        },
+        {
+          "timestamp": 1760038101.2029598,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 1, 'description': \"Search for the movie 'The Godfather'\", 'objective': 'Identify the key information related to the movie', 'expected_outcome': 'Retrieve details such as the director, release year, and cast', 'status': 'not_started'}\nContext: {'current_context': 'Executing step 1 of 3', 'available_info': 'Discovered 0 entities so far', 'memory_context': \"Current Question: Who directed The Godfather?\\nProgress: Step 0/3 - Search for the movie 'The Godfather'\\nDiscovered Entities: 0\\nExplored Relations: 0\\n\"}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': ['The Godfather movie', 'Cast members', 'Plot summary', 'Awards and nominations'], 'predicted_challenges': ['Ambiguity in search results due to multiple movies with similar titles', 'Incomplete or inaccurate information on the knowledge graph'], 'confidence_level': 'medium', 'alternative_approaches': ['Cross-referencing information from multiple sources', 'Using specific search filters to narrow down results'], 'expected_information_type': 'Key details about the movie such as plot, cast, awards, and critical reception'}, 'token_usage': {'total': 310, 'input': 194, 'output': 116}}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 2
+        },
+        {
+          "timestamp": 1760038101.202993,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['The Godfather']\nPlan Step: {'step_id': 1, 'description': \"Search for the movie 'The Godfather'\", 'objective': 'Identify the key information related to the movie', 'expected_outcome': 'Retrieve details such as the director, release year, and cast', 'status': 'not_started'}",
+          "response": "Starting execution for 1 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 1
+          },
+          "call_id": 3
+        },
+        {
+          "timestamp": 1760038116.7267342,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': ['The Godfather movie', 'Cast members', 'Plot summary', 'Awards and nominations'], 'predicted_challenges': ['Ambiguity in search results due to multiple movies with similar titles', 'Incomplete or inaccurate information on the knowledge graph'], 'confidence_level': 'medium', 'alternative_approaches': ['Cross-referencing information from multiple sources', 'Using specific search filters to narrow down results'], 'expected_information_type': 'Key details about the movie such as plot, cast, awards, and critical reception'}\nObservation: Exploration results for The Godfather:\n  - base.wfilmbase.film.w_id: m.0599x_d\n  - film.cinematographer.film: Gordon Willis\n  - film.content_rating.film: R (USA)\n  - film.director.film: Francis Ford Coppola\n  - film.editor.film: Peter Zinner, William H. Reynolds\nTotal entities discovered: 6\nStep: {'step_id': 1, 'description': \"Search for the movie 'The Godfather'\", 'objective': 'Identify the key information related to the movie', 'expected_outcome': 'Retrieve details such as the director, release year, and cast', 'status': 'not_started'}\nMemory: Current Question: Who directed The Godfather?\nProgress: Step 0/3 - Search for the movie 'The Godfather'\nDiscovered Entities: 6\nExplored Relations: 5\n",
+          "response": "{'direct_answer_found': 'yes', 'answer_content': 'Francis Ford Coppola directed The Godfather.', 'step_success': 'success', 'progress_assessment': 'significant progress', 'next_action': 'PROCEED', 'reasoning': 'The direct answer to the main question was found in the structured observation. The key entities and relations explored align perfectly with the objective of finding out the director of The Godfather.', 'confidence': 'high', 'information_completeness': 'complete'}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 4
+        },
+        {
+          "timestamp": 1760038116.726753,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 1,
+            "step_id": 1,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 5
+        },
+        {
+          "timestamp": 1760038118.0886242,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 2, 'description': \"Extract the director's name from the movie details\", 'objective': 'Isolate the specific information about the director', 'expected_outcome': \"Obtain the name of the director who worked on 'The Godfather'\", 'status': 'not_started'}\nContext: {'current_context': 'Executing step 2 of 3', 'available_info': 'Discovered 6 entities so far', 'memory_context': \"Current Question: Who directed The Godfather?\\nProgress: Step 1/3 - Extract the director's name from the movie details\\nDiscovered Entities: 6\\nExplored Relations: 5\\n\"}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': [\"Director's name\"], 'predicted_challenges': ['Ambiguity in movie details, multiple directors, missing director information'], 'confidence_level': 'medium', 'alternative_approaches': [\"Cross-referencing with external databases, searching for director's name in reviews or articles\"], 'expected_information_type': 'Name of the director of the movie'}, 'token_usage': {'total': 276, 'input': 195, 'output': 81}}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 6
+        },
+        {
+          "timestamp": 1760038118.08864,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['The Godfather', 'm.0599x_d', 'Gordon Willis']\nPlan Step: {'step_id': 2, 'description': \"Extract the director's name from the movie details\", 'objective': 'Isolate the specific information about the director', 'expected_outcome': \"Obtain the name of the director who worked on 'The Godfather'\", 'status': 'not_started'}",
+          "response": "Starting execution for 3 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 3
+          },
+          "call_id": 7
+        },
+        {
+          "timestamp": 1760038201.890798,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': [\"Director's name\"], 'predicted_challenges': ['Ambiguity in movie details, multiple directors, missing director information'], 'confidence_level': 'medium', 'alternative_approaches': [\"Cross-referencing with external databases, searching for director's name in reviews or articles\"], 'expected_information_type': 'Name of the director of the movie'}\nObservation: Exploration results for The Godfather:\n  - base.wfilmbase.film.w_id: m.0599x_d\n  - film.cinematographer.film: Gordon Willis\n  - film.content_rating.film: R (USA)\n  - film.director.film: Francis Ford Coppola\n  - film.editor.film: Peter Zinner, William H. Reynolds\nTotal entities discovered: 6\nExploration results for m.0599x_d:\n  - base.wfilmbase.film.w_id: The Godfather\n  - base.wfilmbase.siteid.document_order: 0\n  - base.wfilmbase.siteid.film: The Godfather\n  - base.wfilmbase.siteid.identifier: SB100380237687901440\nTotal entities discovered: 4\nExploration results for Gordon Willis:\n  - film.cinematographer.film: A Midsummer Night's Sex Comedy, All the President's Men, Annie Hall and 32 more\n  - film.director.film: Windows\n  - film.film.cinematography: A Midsummer Night's Sex Comedy, All the President's Men, Annie Hall and 32 more\n  - film.film.directed_by: Windows\n  - film.person_or_entity_appearing_in_film.films: m.0h38vnd, m.0h39cmd\nTotal entities discovered: 74\nStep: {'step_id': 2, 'description': \"Extract the director's name from the movie details\", 'objective': 'Isolate the specific information about the director', 'expected_outcome': \"Obtain the name of the director who worked on 'The Godfather'\", 'status': 'not_started'}\nMemory: Current Question: Who directed The Godfather?\nProgress: Step 1/3 - Extract the director's name from the movie details\nDiscovered Entities: 45\nExplored Relations: 14\n",
+          "response": "{'direct_answer_found': 'yes', 'answer_content': 'Francis Ford Coppola directed The Godfather.', 'step_success': 'success', 'progress_assessment': 'significant progress', 'next_action': 'PROCEED', 'reasoning': \"The exploration successfully extracted the director's name from the movie details with high accuracy. The key entities and relations have been identified, providing a direct answer to the main question.\", 'confidence': 'high', 'information_completeness': 'complete'}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 8
+        },
+        {
+          "timestamp": 1760038201.89083,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 2,
+            "step_id": 2,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 9
+        },
+        {
+          "timestamp": 1760038203.596292,
+          "call_type": "step2_prediction",
+          "prompt": "Step: {'step_id': 3, 'description': \"Verify the accuracy of the director's name\", 'objective': \"Confirm the correctness of the director's identity\", 'expected_outcome': \"Ensure that the director's name obtained is accurate and matches the actual director of the movie\", 'status': 'not_started'}\nContext: {'current_context': 'Executing step 3 of 3', 'available_info': 'Discovered 45 entities so far', 'memory_context': \"Current Question: Who directed The Godfather?\\nProgress: Step 2/3 - Verify the accuracy of the director's name\\nDiscovered Entities: 45\\nExplored Relations: 14\\n\"}",
+          "response": "{'success': True, 'prediction': {'predicted_entities': [\"Director's name\", 'Associated movies', 'Biographical information'], 'predicted_challenges': [\"Ambiguity in director's name (common names)\", 'Inconsistencies in data sources'], 'confidence_level': 'medium', 'alternative_approaches': ['Cross-referencing multiple sources', 'Seeking confirmation from reliable sources'], 'expected_information_type': 'Accurate and verified details about the director'}, 'token_usage': {'total': 288, 'input': 194, 'output': 94}}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "2_prediction",
+            "step_description": "Predictive Processing - Outcome Prediction"
+          },
+          "call_id": 10
+        },
+        {
+          "timestamp": 1760038203.5963469,
+          "call_type": "step3_execution_start",
+          "prompt": "PPoGA Step 3 - Execution Phase\nEntities to explore: ['The Godfather', 'm.0599x_d', 'Gordon Willis']\nPlan Step: {'step_id': 3, 'description': \"Verify the accuracy of the director's name\", 'objective': \"Confirm the correctness of the director's identity\", 'expected_outcome': \"Ensure that the director's name obtained is accurate and matches the actual director of the movie\", 'status': 'not_started'}",
+          "response": "Starting execution for 3 entities",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "3_execution",
+            "step_description": "Action Execution - SPARQL queries and knowledge graph exploration",
+            "entities_count": 3
+          },
+          "call_id": 11
+        },
+        {
+          "timestamp": 1760038288.793329,
+          "call_type": "step4_observation_thought",
+          "prompt": "PPoGA Step 4 - Observation & Thought Analysis\nPrediction: {'predicted_entities': [\"Director's name\", 'Associated movies', 'Biographical information'], 'predicted_challenges': [\"Ambiguity in director's name (common names)\", 'Inconsistencies in data sources'], 'confidence_level': 'medium', 'alternative_approaches': ['Cross-referencing multiple sources', 'Seeking confirmation from reliable sources'], 'expected_information_type': 'Accurate and verified details about the director'}\nObservation: Exploration results for The Godfather:\n  - base.wfilmbase.film.w_id: m.0599x_d\n  - film.cinematographer.film: Gordon Willis\n  - film.content_rating.film: R (USA)\n  - film.director.film: Francis Ford Coppola\n  - film.editor.film: Peter Zinner, William H. Reynolds\nTotal entities discovered: 6\nExploration results for m.0599x_d:\n  - base.wfilmbase.film.w_id: The Godfather\n  - base.wfilmbase.siteid.document_order: 0\n  - base.wfilmbase.siteid.film: The Godfather\n  - base.wfilmbase.siteid.identifier: SB100380237687901440\nTotal entities discovered: 4\nExploration results for Gordon Willis:\n  - film.cinematographer.film: A Midsummer Night's Sex Comedy, All the President's Men, Annie Hall and 32 more\n  - film.director.film: Windows\n  - film.film.cinematography: A Midsummer Night's Sex Comedy, All the President's Men, Annie Hall and 32 more\n  - film.film.directed_by: Windows\n  - film.person_or_entity_appearing_in_film.films: m.0h38vnd, m.0h39cmd\nTotal entities discovered: 74\nStep: {'step_id': 3, 'description': \"Verify the accuracy of the director's name\", 'objective': \"Confirm the correctness of the director's identity\", 'expected_outcome': \"Ensure that the director's name obtained is accurate and matches the actual director of the movie\", 'status': 'not_started'}\nMemory: Current Question: Who directed The Godfather?\nProgress: Step 2/3 - Verify the accuracy of the director's name\nDiscovered Entities: 45\nExplored Relations: 14\n",
+          "response": "{'direct_answer_found': 'yes', 'answer_content': 'Francis Ford Coppola directed The Godfather', 'step_success': 'success', 'progress_assessment': 'significant_progress', 'next_action': 'PROCEED', 'reasoning': 'The exploration results have provided a direct answer to the main question, confirming that Francis Ford Coppola directed The Godfather. The information quality is high, and the relevance to the question is also high.', 'confidence': 'high', 'information_completeness': 'complete'}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "4_observation_thought",
+            "step_description": "Observation and Thought - Compare prediction with actual results"
+          },
+          "call_id": 12
+        },
+        {
+          "timestamp": 1760038288.793349,
+          "call_type": "step6_evaluation_correction",
+          "prompt": "PPoGA Step 6 - Evaluation & Two-Level Self-Correction\nThought Analysis: {}\nNext Action Decision Required",
+          "response": "{'next_action': 'PROCEED'}",
+          "success": true,
+          "metadata": {
+            "iteration": 3,
+            "step_id": 3,
+            "ppoga_step": "6_evaluation_correction",
+            "step_description": "Evaluation and Two-Level Self-Correction - Decide next action",
+            "next_action": "PROCEED"
+          },
+          "call_id": 13
+        },
+        {
+          "timestamp": 1760038290.4824,
+          "call_type": "step5_final_answer_generation",
+          "prompt": "PPoGA Step 5 - Final Answer Generation\nQuestion: Who directed The Godfather?\nMemory Context: Current Question: Who directed The Godfather?\nProgress: Step 3/3 - Completed\nDiscovered Entities: 45\nExplored Relations: 14\n\nReasoning Chains: []",
+          "response": "{'success': True, 'answer_data': {'final_answer': 'Francis Ford Coppola', 'confidence': 'high', 'supporting_evidence': ['Francis Ford Coppola is widely known as the director of The Godfather.'], 'reasoning_chain': [], 'limitations': 'There is a high level of certainty in this answer based on widely available information.'}, 'token_usage': {'total': 240, 'input': 166, 'output': 74}}",
+          "success": true,
+          "metadata": {
+            "ppoga_step": "5_final_answer_generation",
+            "step_description": "Memory Integration and Final Answer Synthesis",
+            "final_step": true,
+            "total_iterations": 3,
+            "total_entities_discovered": 45,
+            "total_relations_explored": 0
+          },
+          "call_id": 14
+        }
+      ]
+    },
+    "planner_stats": {
+      "total_llm_calls": 14,
+      "successful_predictions": 3,
+      "failed_predictions": 0,
+      "replans_triggered": 0
+    },
+    "executor_stats": {
+      "total_queries": 33,
+      "successful_queries": 7,
+      "failed_queries": 0,
+      "entities_discovered": 98,
+      "relations_explored": 33
+    },
+    "total_llm_calls": 8,
+    "total_sparql_queries": 7
+  }
+}
