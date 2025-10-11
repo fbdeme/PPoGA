@@ -30,6 +30,8 @@ class PPoGAConfig:
 
     # Dataset settings
     dataset: str = "cwq"  # cwq, webqsp, grailqa
+    cope_alias_dir: str = "cope_alias"  # Directory for alias files
+    batch_size: int = 1  # Process questions in batches
 
     # Output settings
     output_dir: str = "results"

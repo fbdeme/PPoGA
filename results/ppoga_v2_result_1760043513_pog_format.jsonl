@@ -1,0 +1,1 @@
+{"question": "What is the birth year of the person who directed the movie Titanic?", "results": "{\"A\": {\"Answer\": \"1954\", \"Sufficient\": \"Yes\"}, \"R\": \"The movie Titanic was directed by James Cameron. James Cameron was born in 1954.\"}", "call_num": 3, "time": 49.506325006484985, "input_token": 983, "output_token": 543, "total_token": 1526}
